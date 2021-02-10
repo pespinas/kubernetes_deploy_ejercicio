@@ -23,11 +23,14 @@ spec:
           - containerPort: 80
         volumeMounts:
         - name: nginx-conf
-          mountPath: /usr/share/nginx/html/index.html
+          mountPath: "/usr/share/nginx/html"
     volumes:
       - name: nginx-conf
         configMap:
           name: index_html
+          items:
+          - key: index.html
+            path: index.html
 ---
 apiVersion: v1
 kind: Service
